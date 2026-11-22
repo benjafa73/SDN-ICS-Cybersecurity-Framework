@@ -1,73 +1,114 @@
 # SDN-Based Cybersecurity Framework for Industrial Control Systems
 
-## Project Description
+## Research Project
 
-This repository contains the MATLAB simulation source code and reproducibility artefacts for the research study titled **Development of a Software Defined Network Based Cybersecurity Framework for Industrial Control Systems**.
+**Title:** Development of a Software Defined Network Based Cybersecurity Framework for Industrial Control Systems
 
-The study develops and evaluates an SDN-inspired cybersecurity framework for Industrial Control Systems (ICS) using a MATLAB-based simulation model.
+**Authors:** Mupatiwa Zulu and Lukumba Phiri
 
-## Software Environment
+**Institution:** University of Zambia, School of Engineering
 
-- MATLAB release used for the reported results: **MATLAB R2024b**
-- Minimum stated source-code requirement: MATLAB R2020a or later
-- MATLAB Base functions only
-- No additional MATLAB toolboxes required
+## 1. Overview
 
-## Simulation Configuration
+This repository contains the MATLAB simulation source code, supporting datasets, figures and reproducibility artefacts for evaluating an SDN-based cybersecurity framework for Industrial Control Systems (ICS).
 
-| Parameter | Value |
-|---|---:|
-| Simulation duration | 120 seconds |
-| Simulation time step | 0.01 seconds |
-| Monte Carlo runs | 30 |
-| Base random seed | 2026 |
-| Attack period | 45–90 seconds |
-| Bottleneck capacity | 1,000 packets/second |
-| Buffer capacity | 200 packets |
+The simulation models an ICS environment involving a Human-Machine Interface (HMI), engineering workstation and Programmable Logic Controller (PLC).
 
-## Attack Scenarios
+## 2. Software Requirements
 
-The simulation evaluates four attack scenarios:
+- MATLAB R2024b (used for the reported results).
+- MATLAB R2020a or later.
+- Base MATLAB functions.
+- No additional MATLAB toolboxes required.
 
-1. TCP Port Scan
-2. Modbus/TCP Flood
-3. TCP SYN Flood (spoofed)
-4. HTTP Flood
+## 3. Simulation Configuration
 
-## Random-Seed Scheme
+- Simulation duration: 120 seconds.
+- Simulation time step: 0.01 seconds.
+- Monte Carlo runs: 30.
+- Base random seed: 2026.
+- Network bottleneck capacity: 1,000 packets/second.
+- Buffer capacity: 200 packets.
 
-The Twister random-number generator is used. For Monte Carlo run \(r\) and attack scenario \(a\), the seed is calculated as:
+## 4. Attack Scenarios
 
-`Seed = 2026 + 1000*r + a`
+1. TCP SYN port scanning.
+2. Modbus/TCP flooding.
+3. TCP SYN flooding (spoofed).
+4. HTTP flooding.
 
-Runs are indexed from 1 to 30, and attack scenarios are indexed from 1 to 4.
+## 5. Comparison Modes
 
-## Repository Contents
+- **Baseline:** Network operation without a security application.
+- **Static ACL:** Static Access Control List protection.
+- **SDN-Sec:** SDN-based detection and dynamic mitigation.
 
-The ZIP archive contains the following artefacts:
+The three modes are evaluated using identical simulated traffic conditions.
 
-- MATLAB simulation source code
-- Individual Monte Carlo run results
-- Raw MATLAB simulation data
-- Four exported Excel summary tables
-- Nine generated PNG figures
-- Reproducibility documentation
+## 6. Evaluation Metrics
 
-[Download the complete simulation package](SDN_ICS_Cybersecurity_Simulation_v1.0.zip)
+- Attack detection latency.
+- Time to mitigation.
+- Detection performance and false-positive rate.
+- Legitimate HMI packet delivery.
+- HMI packet loss.
+- HMI communication latency and deadline misses.
+- Threshold sensitivity.
+- Controller resource utilisation.
 
-## Running the Simulation
+## 7. Repository Releases
 
-1. Download and extract the ZIP archive.
-2. Open MATLAB.
-3. Set the extracted `Appendix_B_Simulation_Artefacts` folder as the MATLAB Current Folder.
-4. Run the following command:
+Two simulation releases are maintained:
 
-`run(fullfile('01_Source_Code','sdn_Code_REPRODUCIBILITY.m'))`
+- **V1.0:** Original MATLAB simulation package.
+- **V2.0:** Updated MATLAB simulation package with the revised three-mode comparison, supporting results and reproducibility script.
 
-The simulation generates the figures and summary tables in the current folder.
+The latest release is:
 
-## Reproducibility Note
+`SDN_ICS_Cybersecurity_Simulation_V2.0.zip`
 
-This work is based on a MATLAB simulation model. It does not represent a deployment involving a live SDN controller or a physical Industrial Control System testbed. The mitigation mechanism models SDN/OpenFlow-inspired behaviour.
+## 8. Running the Simulation
 
-The reported results correspond to the simulation configuration and random-seed scheme documented above.
+### Requirements
+
+MATLAB R2020a or later, with Base MATLAB.
+
+### Instructions
+
+1. Download the V2.0 ZIP package.
+2. Extract all files into one project directory.
+3. Open MATLAB.
+4. Set the extracted project directory as the MATLAB Current Folder.
+5. Execute:
+
+```matlab
+sdn_Code_REPRODUCIBILITY
+```
+
+The reproducibility script executes the authoritative simulation file, `sdn_Code.m`.
+
+The simulation generates the corresponding figures, tables and datasets.
+
+## 9. Simulation Limitations
+
+This study uses a MATLAB-based simulation model. It does not represent deployment on a physical industrial network or a live SDN controller.
+
+SDN monitoring, detection and mitigation operations are represented through simulated network and controller behaviour.
+
+Results should therefore be interpreted within the assumptions and limitations of the simulation environment.
+
+## 10. Reproducibility and Citation
+
+The simulation source code and supporting research artefacts are provided in the repository.
+
+The archived research release and its permanent Zenodo DOI will be added following publication of the updated Zenodo version.
+
+## 11. Authors
+
+**Mupatiwa Zulu**  
+School of Engineering  
+University of Zambia
+
+**Lukumba Phiri**  
+School of Engineering  
+University of Zambia
